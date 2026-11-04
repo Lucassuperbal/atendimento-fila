@@ -3,7 +3,7 @@ private String nome;
 private String cpf;
 private String telefone;
 private String datanascimento;
-private String senha;
+
 
 public Pessoa(String nome, String cpf, String telefone, String datanascimento){
 this.nome = nome;
@@ -43,6 +43,7 @@ this.datanascimento = datanascimento;
         str += " Cpf:"+cpf;
         str += " Telefone:"+telefone;
         str += " Data de nascimento:"+datanascimento;
+        
 
         return str;
     }
