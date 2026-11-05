@@ -61,31 +61,30 @@ public class Fila {
             return null;
         }
 
-        // Define o formato da data que está salva na classe Pessoa (Ex: "dd/MM/yyyy")
-        // Mude para "yyyy-MM-dd" se as datas forem salvas no formato americano
+        
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         int indiceMaisVelho = 0;
         LocalDate dataMaisVelha = LocalDate.parse(fila.get(0).getDatanascimento(), formatador);
 
-        // Varre a fila comparando as datas de nascimento
+        
         for (int i = 1; i < fila.size(); i++) {
             LocalDate dataAtual = LocalDate.parse(fila.get(i).getDatanascimento(), formatador);
+    
             
-            // Uma data de nascimento anterior significa que a pessoa é mais velha
             if (dataAtual.isBefore(dataMaisVelha)) {
                 dataMaisVelha = dataAtual;
                 indiceMaisVelho = i;
             }
         }
 
-        // Guarda a referência da pessoa chamada para exibir/retornar
+        
         Pessoa pessoaChamada = fila.get(indiceMaisVelho);
         int senhaChamada = senhaAtual.get(indiceMaisVelho);
 
         System.out.println("Chamando: " + pessoaChamada.getNome() + " (Senha: " + senhaChamada + ") - Prioridade por Idade.");
 
-        // Remove a pessoa chamada da fila utilizando o seu próprio método
+    
         remover(indiceMaisVelho);
 
         return pessoaChamada;
